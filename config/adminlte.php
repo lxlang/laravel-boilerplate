@@ -85,15 +85,15 @@ return [
 	|
 	*/
 
-	'dashboard_url' => '/',
+	'dashboard_url' => '/dashboard',
 
-	'logout_url' => false,
+	'logout_url' => '/logout',
 
-	'logout_method' => false,
+	'logout_method' => 'POST',
 
 	'login_url' => 'login',
 
-	'register_url' => null,
+	'register_url' => 'register',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -108,6 +108,11 @@ return [
 	*/
 
 	'menu' => [
+		'MAIN NAVIGATION',
+		[
+			'text' => 'Dashboard',
+			'url' => 'dashboard',
+		],
 	],
 
 	/*
@@ -123,7 +128,13 @@ return [
 	*/
 
 	'filters' => [
+		JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
+		JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
+		JeroenNoten\LaravelAdminLte\Menu\Filters\SubmenuFilter::class,
+		JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
+		JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
 	],
+
 
 	/*
 	|--------------------------------------------------------------------------
