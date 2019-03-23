@@ -18,18 +18,8 @@
 			<form action="{{ url(config('adminlte.register_url', 'register')) }}" method="post">
 				{!! csrf_field() !!}
 
+				{!! BootForm::checkbox('privacy_policy', 'Privacy Policy') !!}
 
-				<div class="form-check has-feedback {{ $errors->has('privacy_policy') ? 'has-error' : '' }}">
-					<input class="form-check-input" type="checkbox" value="1" name="privacy_policy" id="privacy_policy">
-					<label class="form-check-label" for="privacy_policy">
-						Privacy Policy
-					</label>
-					@if ($errors->has('privacy_policy'))
-						<span class="help-block">
-                            <strong>{{ $errors->first('privacy_policy') }}</strong>
-                        </span>
-					@endif
-				</div>
 				<button type="submit"
 						class="btn btn-primary btn-block btn-flat"
 				><i class="fa fa-{{ config('services.socialite_driver') }}"></i> {{ trans('adminlte::adminlte.register') }}</button>
