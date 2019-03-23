@@ -65,8 +65,10 @@ class LoginController extends Controller {
 			->first();
 
 		if (!$user) {
+			/*
+			 * User does not exist. Redirect to register.
+			 */
 			Session::put('register_user', $oauthUser);
-
 			return redirect(route('register'));
 		}
 

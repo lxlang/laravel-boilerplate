@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
 use Session;
 
@@ -26,13 +27,15 @@ class RegisterController extends Controller {
 		/** @var \Laravel\Socialite\Two\User $oauthUser */
 		$oauthUser = Session::pull('register_user');
 
-		User::create([
+		$user = User::create([
 			//Name will be updated at login
 			'name' => $oauthUser->getName(),
 			'email' => $oauthUser->getEmail(),
 			'avatar' => $oauthUser->getAvatar(),
 		]);
 
-		return redirect(route('login'));
+		Auth::login($user);
+
+		return redirect()->intended(route('dashboard'));
 	}
 }
